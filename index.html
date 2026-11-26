@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Always revalidate the entry point. Assets below are cache-busted by
+     content hash, so the browser only re-downloads files that actually changed. -->
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+<title>OIS Centralized Hub · TrustArc</title>
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1-xJSta6QdaHzo5ygCb3osvnSuYKZ6sHX=w96" />
+<link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1-xJSta6QdaHzo5ygCb3osvnSuYKZ6sHX=w96" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+<link rel="stylesheet" href="css/01-tokens.css?v=cc99af8a" />
+<link rel="stylesheet" href="css/02-app.css?v=3394df17" />
+<link rel="stylesheet" href="css/03-boot.css?v=ebd3ce2d" />
+<link rel="stylesheet" href="css/04-banner-generator.css?v=e61f16f3" />
+<link rel="stylesheet" href="css/05-tips-tricks.css?v=11d2c376" />
+<link rel="stylesheet" href="css/06-tips-overrides.css?v=2996a523" />
+</head>
+<body>
+
+<!-- ── JARVIS BOOT SPLASH ── -->
+<!-- Brief branded splash: avoids a flash of unstyled content, nothing more. -->
+<div id="jarvis-boot" style="
+  position:fixed;inset:0;z-index:9999;
+  background:#F7F8FC;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:18px;
+">
+  <img src="https://lh3.googleusercontent.com/d/1-xJSta6QdaHzo5ygCb3osvnSuYKZ6sHX=w96"
+       alt="" width="44" height="44" style="display:block;border-radius:10px;" />
+  <div style="width:120px;height:2px;background:rgba(27,28,107,0.12);border-radius:2px;overflow:hidden;">
+    <div id="boot-bar" style="height:100%;width:0%;background:#EC4B8C;transition:width .25s ease;"></div>
+  </div>
+  <div id="boot-lines" style="
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(27,28,107,0.45);
+  ">OIS Centralized Hub</div>
+</div>
+
+<script src="js/01-boot.js?v=49b7c6e2"></script>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <img src="https://lh3.googleusercontent.com/d/1-xJSta6QdaHzo5ygCb3osvnSuYKZ6sHX=w96" alt="TrustArc" style="height:28px;width:auto;display:block;" />
+      <span class="brand-text">TrustArc</span>
+      <span class="brand-slash">/</span>
+      <span>OIS Centralized Hub</span>
+    </div>
+    <div class="topbar-right">
+      <div class="live-clock"><span class="live-dot"></span><span id="clock">--:--</span></div>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle light / dark theme">
+        <svg id="theme-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="scrim" id="scrim"></div>
+<div class="shell">
+
+  <!-- ─── Sidebar nav ────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <button class="nav-item" data-route="home">
+        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 4l9 8M5 10v10h14V10"/></svg></span>
+        <span class="nav-name">Home</span>
+      </button>
+    </div>
+    <div id="sidebar-tools"></div>
+  </aside>
+
+  <!-- ─── Main panel ─────────────────────────────────── -->
+  <div class="main-panel">
+
+  <!-- Home view (existing card grid) -->
+  <section class="view active" id="view-home">
+
+  <div class="search-wrap">
+    <span class="search-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+    <input id="search" class="search-input" type="text" placeholder="Search tools, paste a name, or describe what you need…" autofocus />
+    <div class="search-kbd"><span class="kbd">⌘</span><span class="kbd">K</span></div>
+  </div>
+
+  <div class="filters">
+    <!-- Built by updateCounts() from the same categories as the sidebar -->
+  </div>
+
+  <div id="content"></div>
+
+  <div class="foot">
+    <span id="build-stamp" title="v1.0 · build 7d78b696">OIS Centralized Hub V1</span>
+  </div>
+  </section>
+  <!-- /Home view -->
+
+  <!-- Tool view (populated by router) -->
+  <section class="view" id="view-tool"></section>
+
+  </div><!-- /main-panel -->
+</div><!-- /shell -->
+
+
+<!-- Tool modules: load order is significant (shared globals). -->
+<script src="js/02-tips-pages.js?v=d98b1c37"></script>
+<script src="js/03-backfill-tool.js?v=6de9e285"></script>
+<script src="js/04-mockup-generator.js?v=81d00ea2"></script>
+<script src="js/05-legacy-banner.js?v=ac231920"></script>
+<script src="js/06-wcag-banner.js?v=5d5390a4"></script>
+<script src="js/07-app.js?v=b4b720cc"></script>
+</body>
+</html>
+
