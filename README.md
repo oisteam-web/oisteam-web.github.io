@@ -2,15 +2,9 @@
 
 Split build of the hub. Generated from the single-file `ois-centralized-hub.html`.
 
-## Upload (FileZilla)
+## Layout
 
-Upload the **whole folder, preserving structure** to:
-
-```
-/assets/test/OISTeam_Internal_Tools/ois_centralized_hub/
-```
-
-Resulting layout on the server:
+Keep the folder structure intact when hosting — all asset paths are relative:
 
 ```
 ois_centralized_hub/
@@ -19,17 +13,10 @@ ois_centralized_hub/
 └── js/    (7 files)
 ```
 
-Then open:
-
-```
-https://choices-sb.truste-svc.net/assets/test/OISTeam_Internal_Tools/ois_centralized_hub/index.html
-```
-
-> **Trailing slash matters.** All asset paths are relative. Linking to
-> `.../ois_centralized_hub/index.html` or `.../ois_centralized_hub/` both work.
-> Linking to `.../ois_centralized_hub` (no slash, no filename) will break the
-> asset paths, because the browser treats the last segment as a file and looks
-> for `css/` one level too high. Always include the filename or the trailing slash.
+> **Trailing slash matters.** Linking to `.../index.html` or to the folder with a
+> trailing slash (`.../`) both work. Linking to the folder without a trailing
+> slash or filename will break the asset paths, because the browser treats the
+> last segment as a file and looks for `css/` one level too high.
 
 To rename `index.html`, just rename the file — nothing references it by name.
 
